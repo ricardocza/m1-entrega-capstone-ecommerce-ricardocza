@@ -10,67 +10,107 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="container">
+<body>
 
-    <header class="cabecalho">
-        <div class="logo">Weartake</div>
-        <nav>
-            <ul class="menu">
-                <li>
-                    <a href="">Todos</a>
-                </li>
-                <li>
-                    <a href="">Acessórios</a>
-                </li>
-                <li>
-                    <a href="">Calçados</a>
-                </li>
-                <li>
-                    <a href="">Camisetas</a>
-                </li>                
-            </ul>
-        </nav>
+    <header>
+        <div class="container cabecalho">
+            <h1 class="logo">Weartake</h1>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a href="">Todos</a>
+                    </li>
+                    <li>
+                        <a href="">Acessórios</a>
+                    </li>
+                    <li>
+                        <a href="">Calçados</a>
+                    </li>
+                    <li>
+                        <a href="">Camisetas</a>
+                    </li>                
+                </ul>
+            </nav>            
+        </div>
     </header>
 
-    <main>
+    <main class="container">
         <ul class="produtos">
             <li class="card-produto">
-                <div class="card-img">
+                <figure class="card-img">
                     <img src="img/jaqueta.svg" alt="Camiseta preta">
+                </figure>                
+                <div class="card-info">
+                    <small>Camisetas</small>
+                    <h3>Ligthweight Jacket</h3>
+                    <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
+                    <h4>R$ 100,00</h4>
+                    <div>Adicionar ao carrinho</div>
                 </div>
-                <small>Camisetas</small>
-                <h2>Ligthweight Jacket</h2>
-                <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
-                <h4>R$ 100,00</h4>
-                <div>Adicionar ao carrinho</div>
-            </li>            
+            </li>             
             <li class="card-produto">
-                <div class="card-img">
-                    <img src="img/camiseta_preta.svg" alt="Camiseta preta">
+                <figure class="card-img">
+                    <img src="img/jaqueta.svg" alt="Camiseta preta">
+                </figure>                
+                <div class="card-info">
+                    <small>Camisetas</small>
+                    <h3>Ligthweight Jacket</h3>
+                    <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
+                    <h4>R$ 100,00</h4>
+                    <div>Adicionar ao carrinho</div>
                 </div>
-                <small>Camisetas</small>
-                <h2>Ligthweight Jacket</h2>
-                <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
-                <h4>R$ 100,00</h4>
-                <div>Adicionar ao carrinho</div>
-            </li>            
+            </li>             
             <li class="card-produto">
-                <div class="card-img">
-                    <img src="img/camiseta_preta.svg" alt="Camiseta preta">
+                <figure class="card-img">
+                    <img src="img/jaqueta.svg" alt="Camiseta preta">
+                </figure>                
+                <div class="card-info">
+                    <small>Camisetas</small>
+                    <h3>Ligthweight Jacket</h3>
+                    <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
+                    <h4>R$ 100,00</h4>
+                    <div>Adicionar ao carrinho</div>
                 </div>
-                <small>Camisetas</small>
-                <h2>Ligthweight Jacket</h2>
-                <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
-                <h4>R$ 100,00</h4>
-                <div>Adicionar ao carrinho</div>
-            </li>            
+            </li>             
         </ul>
         <aside>
-            <input type="text">
-            <button>Pesquisar</button>
-            <div class="carrinho">
-                <h3>Carrinho compras</h3>
-
+            <div class="buscador">
+                <input type="text" placeholder="Digite aqui sua pesquisa">
+                <button>Pesquisar</button>
+            </div>
+            <div class="cart">
+                <h3 class="cart-title">Carrinho compras</h3>
+                <!-- CARRINHO VAZIO -->
+                <!-- <span class="cart-empty">
+                    <h2>Carrinho vazio</h2>
+                    <p>Adicione itens</p>
+                </span> -->
+                <!-- CARRINHO COM ITENS -->
+                <ul class="cart-list">
+                    <li class="cart-item">
+                        <figure class="cart-item-img">
+                            <img src="img/jaqueta.svg" alt="">
+                        </figure>
+                        <div class="cart-item-description">
+                            <h4>Ligthweight Jacket</h4>
+                            <p>R$ 100,00</p>
+                            <small>Remover Produto</small>
+                        </div>
+                    </li>
+                    <li class="cart-item">
+                        <figure class="cart-item-img">
+                            <img src="img/jaqueta.svg" alt="">
+                        </figure>
+                        <div class="cart-item-description">
+                            <h4>Ligthweight Jacket</h4>
+                            <p>R$ 100,00</p>
+                            <small>Remover Produto</small>
+                        </div>
+                        <div class="cart-result">
+                            
+                        </div>
+                    </li>
+                </ul>
             </div>
         </aside>
     </main>
