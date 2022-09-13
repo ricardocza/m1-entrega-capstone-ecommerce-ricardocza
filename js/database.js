@@ -9,7 +9,7 @@ const data = [
       "Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante",
     value: 100.90,
     addCart: "Adicionar ao carrinho",
-    tag: ["Camisetas", 'calças', 'moletom'],
+    tag: ["Camisetas", 'Calçados', 'moletom'],
   },
   {
     id: 2,

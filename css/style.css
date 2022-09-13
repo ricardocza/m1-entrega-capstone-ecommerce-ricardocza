@@ -105,6 +105,11 @@ main .produtos {
     display: flex;   
     overflow-y: auto; 
     flex-wrap: wrap; 
+
+    animation-name: blink;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 }
 
 .card-produto {
@@ -293,4 +298,26 @@ aside .cart-result-total {
     padding: 10px 10px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.filtrar {
+    display: none;
+}
+
+.animar {
+    animation-name: blink;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes blink {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;        
+    }
+    
 }

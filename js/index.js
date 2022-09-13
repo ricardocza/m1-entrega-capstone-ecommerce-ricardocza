@@ -139,20 +139,44 @@ for(let i = 0; i < botoesFiltro.length; i++) {
 
 function adicionarFiltro(event) {
     event.preventDefault()
+
     const ul = document.querySelector('.produtos')
-    const filtroClicado = event.path[1].innerText
-    let encontrar = false
-    
-    for(let i = 0; i < ul.children.length; i++) {
-        let liAtual = ul.children[i]
-        let tagLi = liAtual.children[1].children[0]
-        
-        for(let j = 0; j < tagLi.length; j++) {
-            let tagAtual = tagLi[j].innerText
-            if(tagAtual == filtroClicado) encontrar = true
-        }
-        
+    ul.style.animationName = 'none'
+    const filtroClicado = event.path[1]
+    ajustarMenu(filtroClicado)
+    if(filtroClicado.innerText !== 'Todos') {
+        limparFiltro()
+        for(let i = 0; i < ul.children.length; i++) {
+            let encontrar = false
+            let liAtual = ul.children[i]
+            let tagLi = liAtual.children[1].children[0].children
+            for(let j = 0; j < tagLi.length; j++) {
+                let tagAtual = tagLi[j].innerText            
+                if(tagAtual == filtroClicado.innerText) encontrar = true
+            }    
+            if(!encontrar) liAtual.classList += ' filtrar'        
+        }    
+                
+    } 
+    else limparFiltro() 
+    requestAnimationFrame(() => {
+        ul.style.animationName = ''
+    })
+}
+
+function limparFiltro() {
+    const li = document.getElementsByClassName('card-produto')
+    for(let i = 0; i < li.length; i++) {
+        li[i].className = 'card-produto'        
     }
+}
 
-
+function ajustarMenu(obj) {
+    const ulMenu = document.getElementsByClassName('menu')[0]
+    for(let i = 0; i < ulMenu.children.length; i++) {
+        let liAtual = ulMenu.children[i]
+        liAtual.children[0].classList = ''        
+    }
+    let ancora = obj.children[0]
+    ancora.classList = 'menu-selected'    
 }
