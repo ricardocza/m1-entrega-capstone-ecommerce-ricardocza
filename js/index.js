@@ -1,4 +1,8 @@
 verificarDatabase(data)
+let quantidadeItensTotal = 0
+let valorTotal = 0
+const quantidadeItensCart = document.getElementById('quantidade-itens')
+const totalCart = document.getElementById('total-compra')
 
 function verificarDatabase(arrObj) {
     for(let i in arrObj) {
@@ -42,26 +46,113 @@ function inserirCards (obj) {
     ul.append(li)
 }
 
-{/* <li class="card-produto">
-    <figure class="card-img">
-        <img src="img/jaqueta.svg" alt="Camiseta preta">
-    </figure>                
-    <div class="card-info">
-        <div class="tags">
-            <small>Camisetas</small>
-            <small>Camisetas</small>
-            <small>Camisetas</small>
-        </div>
-        <h3>Ligthweight Jacket</h3>
-        <p>Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...</p>
-        <h4>R$ 100,00</h4>
-        <div class="add-cart">Adicionar ao carrinho</div>
-    </div>
-</li>  */}
-
-
 function converterPontoEmVirgula(numero) {
     let valorString = numero.toFixed(2)
     valorString = String(valorString).replace('.', ',')    
     return valorString
+}
+
+const button = document.getElementsByClassName('add-cart')
+for(let i = 0; i < button.length; i++) {
+    let botaoAddAtual = button[i]
+    botaoAddAtual.addEventListener('click', function(event) {
+        let liAtualId = event.path[2].id
+        identificaProdutoCart(liAtualId)
+    })
+}
+
+function identificaProdutoCart(idProduto) {
+    if(quantidadeItensCart.innerText == 0) {
+        const cartEmpty = document.getElementById('cart-empty')
+        cartEmpty.style.display = 'none'
+    }
+    for(let i in data) {
+        if(data[i].id == idProduto) {
+            adicionarItem = data[i]
+            insereProdutoCart(adicionarItem)            
+        }
+    }    
+}
+
+function insereProdutoCart(produto) {
+    const cartList = document.querySelector('.cart-list')
+    const liCart = document.createElement('li')
+
+    liCart.classList += 'cart-item'
+    liCart.id = `cart${cartList.children.length}`            
+    
+    const figureCart = document.createElement('figure')
+    figureCart.classList += 'cart-item-img'            
+    const imgCart = document.createElement('img')
+    imgCart.src = produto.img
+    figureCart.append(imgCart)
+
+    const divCart = document.createElement('div')
+    divCart.classList += 'cart-item-description'
+    const titleCart = document.createElement('h4')
+    titleCart.innerText = produto.nameItem
+    const priceCart = document.createElement('p')
+    priceCart.innerText = `R$ ${converterPontoEmVirgula(produto.value)}`
+    const removerItem = document.createElement('small')
+    removerItem.classList += 'remove-cart'
+    removerItem.innerText = 'Remover Produto'
+    
+    divCart.append(titleCart, priceCart, removerItem)
+    liCart.append(figureCart, divCart)
+    cartList.append(liCart)
+    quantidadeItensTotal++
+    quantidadeItensCart.innerText = quantidadeItensTotal
+    valorTotal += produto.value
+    totalCart.innerText = `R$ ${converterPontoEmVirgula(valorTotal)}`
+
+    //Identificar e remover item do cart
+    removerItem.addEventListener('click', removerItemDoCart)
+}
+
+function removerItemDoCart(event) {
+    if(quantidadeItensTotal == 1) {
+        const cartEmpty = document.getElementById('cart-empty')
+        cartEmpty.style.display = 'flex'                     
+    }
+    let valorRemover = buscarValorRemover(event)
+    valorTotal -= valorRemover
+    totalCart.innerText = `R$ ${converterPontoEmVirgula(valorTotal)}`
+    quantidadeItensTotal--
+    quantidadeItensCart.innerText = quantidadeItensTotal
+
+    let itemRemover = event.path[2]
+    itemRemover.remove()
+}
+
+function buscarValorRemover(event) {
+    let item = event.path[1]
+    let price = item.children[1].innerText
+    price = price.substr(3).replace(',', '.')
+    return price    
+}
+
+const menuFiltro = document.getElementsByClassName('menu')
+const botoesFiltro = menuFiltro[0].children
+for(let i = 0; i < botoesFiltro.length; i++) {
+    botoesFiltro[i].addEventListener('click', adicionarFiltro)
+}
+
+function adicionarFiltro(event) {
+    event.preventDefault()
+    const ul = document.querySelector('.produtos')
+    const filtroClicado = event.path[1].innerText
+    let encontrar = false
+    
+    for(let i = 0; i < ul.children.length; i++) {
+        let liAtual = ul.children[i]
+        let tagLi = liAtual.children[1].children[0]
+        
+        for(let j = 0; j < tagLi.length; j++) {
+            let tagAtual = tagLi[j].innerText
+            if(tagAtual == filtroClicado) encontrar = true
+        }
+        
+    }
+
+
 }

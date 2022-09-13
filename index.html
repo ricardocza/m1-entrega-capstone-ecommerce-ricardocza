@@ -18,16 +18,16 @@
             <nav>
                 <ul class="menu">
                     <li>
-                        <a class="menu-selected" href="">Todos</a>
+                        <a class="menu-selected filtro" href="">Todos</a>
                     </li>
                     <li>
-                        <a href="">Acessórios</a>
+                        <a class="filtro" href="">Acessórios</a>
                     </li>
                     <li>
-                        <a href="">Calçados</a>
+                        <a class="filtro" href="">Calçados</a>
                     </li>
                     <li>
-                        <a href="">Camisetas</a>
+                        <a class="filtro" href="">Camisetas</a>
                     </li>                
                 </ul>
             </nav>            
@@ -46,52 +46,23 @@
             <div class="cart">
                 <h3 class="cart-title">Carrinho compras</h3>
                 <!-- CARRINHO VAZIO -->
-                <!-- <span class="cart-empty">
-                    <h2>Carrinho vazio</h2>
-                    <p>Adicione itens</p>
-                </span> -->
+                
                 <!-- CARRINHO COM ITENS -->
                 <ul class="cart-list">
-                    <li class="cart-item">
-                        <figure class="cart-item-img">
-                            <img src="img/jaqueta.svg" alt="">
-                        </figure>
-                        <div class="cart-item-description">
-                            <h4>Ligthweight Jacket</h4>
-                            <p>R$ 100,00</p>
-                            <small>Remover Produto</small>
-                        </div>
-                    </li>
-                    <li class="cart-item">
-                        <figure class="cart-item-img">
-                            <img src="img/jaqueta.svg" alt="">
-                        </figure>
-                        <div class="cart-item-description">
-                            <h4>Ligthweight Jacket</h4>
-                            <p>R$ 100,00</p>
-                            <small>Remover Produto</small>
-                        </div>
-                    </li>
-                    <li class="cart-item">
-                        <figure class="cart-item-img">
-                            <img src="img/jaqueta.svg" alt="">
-                        </figure>
-                        <div class="cart-item-description">
-                            <h4>Ligthweight Jacket</h4>
-                            <p>R$ 100,00</p>
-                            <small>Remover Produto</small>
-                        </div>
-                    </li>
+                    <span id="cart-empty">
+                        <h2>Carrinho vazio</h2>
+                        <p>Adicione itens</p>
+                    </span>                    
                 </ul>
             </div>
             <div class="cart-result">
                 <div class="cart-result-quantidade">
                     <h4>Quantidade</h4>
-                    <span class="quantidade-itens">3</span>
+                    <span id="quantidade-itens">0</span>
                 </div>
                 <div class="cart-result-total">
                     <h4>Total</h4>
-                    <span class="total-compra">R$ 200,00</span>
+                    <span id="total-compra">R$ 0,00</span>
                 </div>
             </div>
         </aside>
