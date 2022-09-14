@@ -20,12 +20,8 @@ function inserirCards (obj) {
     const figure = document.createElement('figure')
     figure.classList += 'card-img'
     figure.style.opacity = '100%'
-    figure.style.position = 'relative'
-    figure.style.zIndex = '10'
     const img = document.createElement('img')
     img.src = obj.img[0]
-    img.style.position = 'relative'
-    img.style.zIndex = '-1'
     figure.append(img)
     const divInfo = document.createElement('div')
     divInfo.classList += 'card-info'    
@@ -185,3 +181,53 @@ function ajustarMenu(obj) {
     let ancora = obj.children[0]
     ancora.classList = 'menu-selected'    
 }
+
+
+let flagOut = ''
+let frame = 50
+let frameDivisor = 60
+let lastTime = 0
+let indiceSoma = 1
+let opacidade = 0
+let incrementoOpacidade = 0.1
+let figuraAtual = ['']
+let indiceImagem = 1
+let id = 0
+
+const cardFigures = document.getElementsByClassName('card-img')
+for(let i = 0; i < cardFigures.length; i++) {
+    let slideAtual = cardFigures[i]
+    slideAtual.addEventListener('mouseout', mouseOut)
+    slideAtual.addEventListener('mouseover', mouseEnter)
+}
+
+function mouseOut() {
+    flagOut = true
+    figuraAtual[0].children[0].src = data[id-1].img[0]
+    frame=50
+}
+
+function mouseEnter(event) {
+    figuraAtual[0] = event.target
+    animarSlide()    
+}
+
+function animarSlide() {
+    
+    let figure = figuraAtual[0]
+    id = figure.parentElement.id
+    if(frame % frameDivisor == 0) {
+        figure.children[0].src =  data[id-1].img[indiceImagem]
+        if(indiceImagem == 3) indiceImagem = 0
+        else indiceImagem++
+    }
+    
+    opacidade += indiceSoma
+    frame++
+    
+    if(flagOut != true) requestAnimationFrame(animarSlide)
+    else if(flagOut == true) flagOut = false
+
+}
+
+
