@@ -185,6 +185,3 @@ function ajustarMenu(obj) {
     let ancora = obj.children[0]
     ancora.classList = 'menu-selected'    
 }
-
-
-//hover usando javascript
