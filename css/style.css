@@ -3,6 +3,7 @@
     list-style: none; 
     padding: 0;
     margin: 0;
+    overflow-y: hidden;
 }
 
 h1 {
@@ -60,7 +61,7 @@ small {
 header {
     padding: 10px 0;
     width: 100%;
-    border-bottom: 1px solid black;
+    box-shadow: 0px -10px 30px -3px rgb(0 0 0 / 50%);
 }
 
 .cabecalho {
@@ -88,6 +89,11 @@ header {
     text-decoration: none;
     color: black;
 }
+.menu a:hover {
+    font-size: 17px;
+
+    transition: 0.3s;
+}
 
 .menu-selected {
     font-weight: 700;
@@ -96,7 +102,7 @@ header {
 main {
     display: flex;    
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 40px;
 }
 
 main .produtos {
@@ -129,7 +135,12 @@ main .produtos {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
-    max-height: 100px;
+    height: 100px;
+}
+.card-produto .card-img img {
+    
+    height: 100%;
+
 }
 .card-produto .tags {
     display: flex;
@@ -154,8 +165,13 @@ main .produtos {
     margin: 5px 0;
     max-height: 260px;
 }
-
-.card-produto .card-info p {    
+.card-produto .card-info p {
+    min-height: 60px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;    
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
@@ -199,9 +215,6 @@ main aside .buscador button:hover{
     cursor: pointer;
 }
 
-aside .cart {
-    
-}
 
 aside .cart .cart-title {
     margin-top: 20px;
@@ -248,11 +261,18 @@ aside .cart .cart-item:hover {
 
 
 .cart-list .cart-item-img {
-    padding-left: 5px;
+    padding: 5px 0 5px 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;    
+    height: 70px;    
+}
+
+.cart-list .cart-item-img img {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 100%;
+    overflow: hidden;
 }
 
 aside .cart .cart-item .cart-item-description{
@@ -261,17 +281,12 @@ aside .cart .cart-item .cart-item-description{
     justify-content: space-around;
 }
 
-aside .cart .cart-item .cart-item-description small:hover {
+aside .cart .cart-item .cart-item-description .remove-cart:hover {
     color: #37268C;
     font-weight: 500;
     text-decoration: underline;
     transition: 0.5s;
     cursor: pointer;
-}
-
-.cart-list .cart-item-img img {
-    background-color: #fff;
-    width: 100%;
 }
 
 aside .cart-result {

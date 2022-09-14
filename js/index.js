@@ -19,8 +19,13 @@ function inserirCards (obj) {
     li.id = obj.id    
     const figure = document.createElement('figure')
     figure.classList += 'card-img'
+    figure.style.opacity = '100%'
+    figure.style.position = 'relative'
+    figure.style.zIndex = '10'
     const img = document.createElement('img')
-    img.src = obj.img
+    img.src = obj.img[0]
+    img.style.position = 'relative'
+    img.style.zIndex = '-1'
     figure.append(img)
     const divInfo = document.createElement('div')
     divInfo.classList += 'card-info'    
@@ -84,7 +89,7 @@ function insereProdutoCart(produto) {
     const figureCart = document.createElement('figure')
     figureCart.classList += 'cart-item-img'            
     const imgCart = document.createElement('img')
-    imgCart.src = produto.img
+    imgCart.src = produto.img[0]
     figureCart.append(imgCart)
 
     const divCart = document.createElement('div')
@@ -93,10 +98,10 @@ function insereProdutoCart(produto) {
     titleCart.innerText = produto.nameItem
     const priceCart = document.createElement('p')
     priceCart.innerText = `R$ ${converterPontoEmVirgula(produto.value)}`
-    const removerItem = document.createElement('small')
+    const removerItem = document.createElement('p')
+    removerItem.style.fontSize = '14px'
     removerItem.classList += 'remove-cart'
-    removerItem.innerText = 'Remover Produto'
-    
+    removerItem.innerText = 'Remover Produto'    
     divCart.append(titleCart, priceCart, removerItem)
     liCart.append(figureCart, divCart)
     cartList.append(liCart)
@@ -141,7 +146,7 @@ function adicionarFiltro(event) {
     event.preventDefault()
 
     const ul = document.querySelector('.produtos')
-    ul.style.animationName = 'none'
+    ul.style.animationName = 'none'    
     const filtroClicado = event.path[1]
     ajustarMenu(filtroClicado)
     if(filtroClicado.innerText !== 'Todos') {
